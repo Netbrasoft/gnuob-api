@@ -1,0 +1,561 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<wsdl:definitions
+   xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+   xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+   xmlns:tns="http://gnuob.netbrasoft.com/"
+   xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+   xmlns:ns1="http://schemas.xmlsoap.org/soap/http"
+   name="OrderWebServiceImplService"
+   targetNamespace="http://gnuob.netbrasoft.com/">
+   <wsdl:types>
+      <xs:schema
+         xmlns:xs="http://www.w3.org/2001/XMLSchema"
+         xmlns:tns="http://gnuob.netbrasoft.com/"
+         elementFormDefault="unqualified"
+         targetNamespace="http://gnuob.netbrasoft.com/"
+         version="1.0">
+         <xs:include schemaLocation="./xsd/order.xsd"></xs:include>
+         <xs:include schemaLocation="./xsd/metaData.xsd"></xs:include>
+         <xs:include schemaLocation="./xsd/operation.xsd"></xs:include>
+         <xs:include schemaLocation="./xsd/orderBy.xsd"></xs:include>
+         <xs:include schemaLocation="./xsd/orderEnum.xsd"></xs:include>
+         <xs:include schemaLocation="./xsd/paging.xsd"></xs:include>
+         <xs:element
+            name="Address"
+            type="tns:address" />
+         <xs:element
+            name="Content"
+            type="tns:content" />
+         <xs:element
+            name="Contract"
+            type="tns:contract" />
+         <xs:element
+            name="Customer"
+            type="tns:customer" />
+         <xs:element
+            name="Invoice"
+            type="tns:invoice" />
+         <xs:element
+            name="Option"
+            type="tns:option" />
+         <xs:element
+            name="Order"
+            type="tns:order" />
+         <xs:element
+            name="OrderRecord"
+            type="tns:orderRecord" />
+         <xs:element
+            name="Paging"
+            type="tns:paging" />
+         <xs:element
+            name="Payment"
+            type="tns:payment" />
+         <xs:element
+            name="Permission"
+            type="tns:permission" />
+         <xs:element
+            name="Product"
+            type="tns:product" />
+         <xs:element
+            name="Rule"
+            type="tns:rule" />
+         <xs:element
+            name="Shipment"
+            type="tns:shipment" />
+         <xs:element
+            name="Stock"
+            type="tns:stock" />
+         <xs:element
+            name="SubCategory"
+            type="tns:subCategory" />
+         <xs:element
+            name="SubOption"
+            type="tns:subOption" />
+         <xs:element
+            name="countOrder"
+            type="tns:countOrder" />
+         <xs:element
+            name="countOrderResponse"
+            type="tns:countOrderResponse" />
+         <xs:element
+            name="findOrder"
+            type="tns:findOrder" />
+         <xs:element
+            name="findOrderById"
+            type="tns:findOrderById" />
+         <xs:element
+            name="findOrderByIdResponse"
+            type="tns:findOrderByIdResponse" />
+         <xs:element
+            name="findOrderResponse"
+            type="tns:findOrderResponse" />
+         <xs:element
+            name="mergeOrder"
+            type="tns:mergeOrder" />
+         <xs:element
+            name="mergeOrderResponse"
+            type="tns:mergeOrderResponse" />
+         <xs:element
+            name="metaData"
+            type="tns:metaData" />
+         <xs:element
+            name="persistOrder"
+            type="tns:persistOrder" />
+         <xs:element
+            name="persistOrderResponse"
+            type="tns:persistOrderResponse" />
+         <xs:element
+            name="refreshOrder"
+            type="tns:refreshOrder" />
+         <xs:element
+            name="refreshOrderResponse"
+            type="tns:refreshOrderResponse" />
+         <xs:element
+            name="removeOrder"
+            type="tns:removeOrder" />
+         <xs:element
+            name="removeOrderResponse"
+            type="tns:removeOrderResponse" />
+         <xs:complexType name="mergeOrder">
+            <xs:sequence>
+               <xs:element
+                  minOccurs="0"
+                  name="order"
+                  type="tns:order" />
+            </xs:sequence>
+         </xs:complexType>
+         <xs:complexType name="mergeOrderResponse">
+            <xs:sequence>
+               <xs:element
+                  minOccurs="0"
+                  name="return"
+                  type="tns:order" />
+            </xs:sequence>
+         </xs:complexType>
+         <xs:complexType name="removeOrder">
+            <xs:sequence>
+               <xs:element
+                  minOccurs="0"
+                  name="order"
+                  type="tns:order" />
+            </xs:sequence>
+         </xs:complexType>
+         <xs:complexType name="removeOrderResponse">
+            <xs:sequence />
+         </xs:complexType>
+         <xs:complexType name="countOrder">
+            <xs:sequence>
+               <xs:element
+                  minOccurs="0"
+                  name="order"
+                  type="tns:order" />
+            </xs:sequence>
+         </xs:complexType>
+         <xs:complexType name="countOrderResponse">
+            <xs:sequence>
+               <xs:element
+                  name="return"
+                  type="xs:long" />
+            </xs:sequence>
+         </xs:complexType>
+         <xs:complexType name="findOrder">
+            <xs:sequence>
+               <xs:element
+                  minOccurs="0"
+                  name="order"
+                  type="tns:order" />
+               <xs:element
+                  minOccurs="0"
+                  name="paging"
+                  type="tns:paging" />
+               <xs:element
+                  minOccurs="0"
+                  name="orderBy"
+                  type="tns:orderBy" />
+            </xs:sequence>
+         </xs:complexType>
+         <xs:complexType name="findOrderResponse">
+            <xs:sequence>
+               <xs:element
+                  maxOccurs="unbounded"
+                  minOccurs="0"
+                  name="return"
+                  type="tns:order" />
+            </xs:sequence>
+         </xs:complexType>
+         <xs:complexType name="persistOrder">
+            <xs:sequence>
+               <xs:element
+                  minOccurs="0"
+                  name="order"
+                  type="tns:order" />
+            </xs:sequence>
+         </xs:complexType>
+         <xs:complexType name="persistOrderResponse">
+            <xs:sequence>
+               <xs:element
+                  minOccurs="0"
+                  name="return"
+                  type="tns:order" />
+            </xs:sequence>
+         </xs:complexType>
+         <xs:complexType name="findOrderById">
+            <xs:sequence>
+               <xs:element
+                  minOccurs="0"
+                  name="order"
+                  type="tns:order" />
+            </xs:sequence>
+         </xs:complexType>
+         <xs:complexType name="findOrderByIdResponse">
+            <xs:sequence>
+               <xs:element
+                  minOccurs="0"
+                  name="return"
+                  type="tns:order" />
+            </xs:sequence>
+         </xs:complexType>
+         <xs:complexType name="refreshOrder">
+            <xs:sequence>
+               <xs:element
+                  minOccurs="0"
+                  name="order"
+                  type="tns:order" />
+            </xs:sequence>
+         </xs:complexType>
+         <xs:complexType name="refreshOrderResponse">
+            <xs:sequence>
+               <xs:element
+                  minOccurs="0"
+                  name="return"
+                  type="tns:order" />
+            </xs:sequence>
+         </xs:complexType>
+      </xs:schema>
+   </wsdl:types>
+   <wsdl:message name="mergeOrderResponse">
+      <wsdl:part
+         element="tns:mergeOrderResponse"
+         name="parameters">
+      </wsdl:part>
+   </wsdl:message>
+   <wsdl:message name="removeOrder">
+      <wsdl:part
+         element="tns:removeOrder"
+         name="parameters">
+      </wsdl:part>
+      <wsdl:part
+         element="tns:metaData"
+         name="metaData">
+      </wsdl:part>
+   </wsdl:message>
+   <wsdl:message name="countOrder">
+      <wsdl:part
+         element="tns:countOrder"
+         name="parameters">
+      </wsdl:part>
+      <wsdl:part
+         element="tns:metaData"
+         name="metaData">
+      </wsdl:part>
+   </wsdl:message>
+   <wsdl:message name="findOrder">
+      <wsdl:part
+         element="tns:findOrder"
+         name="parameters">
+      </wsdl:part>
+      <wsdl:part
+         element="tns:metaData"
+         name="metaData">
+      </wsdl:part>
+   </wsdl:message>
+   <wsdl:message name="persistOrder">
+      <wsdl:part
+         element="tns:persistOrder"
+         name="parameters">
+      </wsdl:part>
+      <wsdl:part
+         element="tns:metaData"
+         name="metaData">
+      </wsdl:part>
+   </wsdl:message>
+   <wsdl:message name="findOrderById">
+      <wsdl:part
+         element="tns:findOrderById"
+         name="parameters">
+      </wsdl:part>
+      <wsdl:part
+         element="tns:metaData"
+         name="metaData">
+      </wsdl:part>
+   </wsdl:message>
+   <wsdl:message name="findOrderByIdResponse">
+      <wsdl:part
+         element="tns:findOrderByIdResponse"
+         name="parameters">
+      </wsdl:part>
+   </wsdl:message>
+   <wsdl:message name="refreshOrderResponse">
+      <wsdl:part
+         element="tns:refreshOrderResponse"
+         name="parameters">
+      </wsdl:part>
+   </wsdl:message>
+   <wsdl:message name="mergeOrder">
+      <wsdl:part
+         element="tns:mergeOrder"
+         name="parameters">
+      </wsdl:part>
+      <wsdl:part
+         element="tns:metaData"
+         name="metaData">
+      </wsdl:part>
+   </wsdl:message>
+   <wsdl:message name="removeOrderResponse">
+      <wsdl:part
+         element="tns:removeOrderResponse"
+         name="result">
+      </wsdl:part>
+   </wsdl:message>
+   <wsdl:message name="findOrderResponse">
+      <wsdl:part
+         element="tns:findOrderResponse"
+         name="parameters">
+      </wsdl:part>
+   </wsdl:message>
+   <wsdl:message name="countOrderResponse">
+      <wsdl:part
+         element="tns:countOrderResponse"
+         name="parameters">
+      </wsdl:part>
+   </wsdl:message>
+   <wsdl:message name="persistOrderResponse">
+      <wsdl:part
+         element="tns:persistOrderResponse"
+         name="parameters">
+      </wsdl:part>
+   </wsdl:message>
+   <wsdl:message name="refreshOrder">
+      <wsdl:part
+         element="tns:refreshOrder"
+         name="parameters">
+      </wsdl:part>
+      <wsdl:part
+         element="tns:metaData"
+         name="metaData">
+      </wsdl:part>
+   </wsdl:message>
+   <wsdl:portType name="OrderWebServiceImpl">
+      <wsdl:operation name="mergeOrder">
+         <wsdl:input
+            message="tns:mergeOrder"
+            name="mergeOrder">
+         </wsdl:input>
+         <wsdl:output
+            message="tns:mergeOrderResponse"
+            name="mergeOrderResponse">
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="removeOrder">
+         <wsdl:input
+            message="tns:removeOrder"
+            name="removeOrder">
+         </wsdl:input>
+         <wsdl:output
+            message="tns:removeOrderResponse"
+            name="removeOrderResponse">
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="countOrder">
+         <wsdl:input
+            message="tns:countOrder"
+            name="countOrder">
+         </wsdl:input>
+         <wsdl:output
+            message="tns:countOrderResponse"
+            name="countOrderResponse">
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="findOrder">
+         <wsdl:input
+            message="tns:findOrder"
+            name="findOrder">
+         </wsdl:input>
+         <wsdl:output
+            message="tns:findOrderResponse"
+            name="findOrderResponse">
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="persistOrder">
+         <wsdl:input
+            message="tns:persistOrder"
+            name="persistOrder">
+         </wsdl:input>
+         <wsdl:output
+            message="tns:persistOrderResponse"
+            name="persistOrderResponse">
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="findOrderById">
+         <wsdl:input
+            message="tns:findOrderById"
+            name="findOrderById">
+         </wsdl:input>
+         <wsdl:output
+            message="tns:findOrderByIdResponse"
+            name="findOrderByIdResponse">
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="refreshOrder">
+         <wsdl:input
+            message="tns:refreshOrder"
+            name="refreshOrder">
+         </wsdl:input>
+         <wsdl:output
+            message="tns:refreshOrderResponse"
+            name="refreshOrderResponse">
+         </wsdl:output>
+      </wsdl:operation>
+   </wsdl:portType>
+   <wsdl:binding
+      name="OrderWebServiceImplServiceSoapBinding"
+      type="tns:OrderWebServiceImpl">
+      <soap:binding
+         style="document"
+         transport="http://schemas.xmlsoap.org/soap/http" />
+      <wsdl:operation name="mergeOrder">
+         <soap:operation
+            soapAction=""
+            style="document" />
+         <wsdl:input name="mergeOrder">
+            <soap:header
+               message="tns:mergeOrder"
+               part="metaData"
+               use="literal">
+            </soap:header>
+            <soap:body
+               parts="parameters"
+               use="literal" />
+         </wsdl:input>
+         <wsdl:output name="mergeOrderResponse">
+            <soap:body use="literal" />
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="removeOrder">
+         <soap:operation
+            soapAction=""
+            style="document" />
+         <wsdl:input name="removeOrder">
+            <soap:header
+               message="tns:removeOrder"
+               part="metaData"
+               use="literal">
+            </soap:header>
+            <soap:body
+               parts="parameters"
+               use="literal" />
+         </wsdl:input>
+         <wsdl:output name="removeOrderResponse">
+            <soap:body use="literal" />
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="countOrder">
+         <soap:operation
+            soapAction=""
+            style="document" />
+         <wsdl:input name="countOrder">
+            <soap:header
+               message="tns:countOrder"
+               part="metaData"
+               use="literal">
+            </soap:header>
+            <soap:body
+               parts="parameters"
+               use="literal" />
+         </wsdl:input>
+         <wsdl:output name="countOrderResponse">
+            <soap:body use="literal" />
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="findOrder">
+         <soap:operation
+            soapAction=""
+            style="document" />
+         <wsdl:input name="findOrder">
+            <soap:header
+               message="tns:findOrder"
+               part="metaData"
+               use="literal">
+            </soap:header>
+            <soap:body
+               parts="parameters"
+               use="literal" />
+         </wsdl:input>
+         <wsdl:output name="findOrderResponse">
+            <soap:body use="literal" />
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="persistOrder">
+         <soap:operation
+            soapAction=""
+            style="document" />
+         <wsdl:input name="persistOrder">
+            <soap:header
+               message="tns:persistOrder"
+               part="metaData"
+               use="literal">
+            </soap:header>
+            <soap:body
+               parts="parameters"
+               use="literal" />
+         </wsdl:input>
+         <wsdl:output name="persistOrderResponse">
+            <soap:body use="literal" />
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="findOrderById">
+         <soap:operation
+            soapAction=""
+            style="document" />
+         <wsdl:input name="findOrderById">
+            <soap:header
+               message="tns:findOrderById"
+               part="metaData"
+               use="literal">
+            </soap:header>
+            <soap:body
+               parts="parameters"
+               use="literal" />
+         </wsdl:input>
+         <wsdl:output name="findOrderByIdResponse">
+            <soap:body use="literal" />
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="refreshOrder">
+         <soap:operation
+            soapAction=""
+            style="document" />
+         <wsdl:input name="refreshOrder">
+            <soap:header
+               message="tns:refreshOrder"
+               part="metaData"
+               use="literal">
+            </soap:header>
+            <soap:body
+               parts="parameters"
+               use="literal" />
+         </wsdl:input>
+         <wsdl:output name="refreshOrderResponse">
+            <soap:body use="literal" />
+         </wsdl:output>
+      </wsdl:operation>
+   </wsdl:binding>
+   <wsdl:service name="OrderWebServiceImplService">
+      <wsdl:port
+         binding="tns:OrderWebServiceImplServiceSoapBinding"
+         name="OrderWebServiceImplPort">
+         <soap:address
+            location="http://localhost:8080/gnuob-soap/OrderWebServiceImpl" />
+      </wsdl:port>
+   </wsdl:service>
+</wsdl:definitions>

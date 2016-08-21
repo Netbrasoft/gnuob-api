@@ -1,0 +1,522 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<wsdl:definitions
+   xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+   xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+   xmlns:tns="http://gnuob.netbrasoft.com/"
+   xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+   xmlns:ns1="http://schemas.xmlsoap.org/soap/http"
+   name="SettingWebServiceImplService"
+   targetNamespace="http://gnuob.netbrasoft.com/">
+   <wsdl:types>
+      <xs:schema
+         xmlns:xs="http://www.w3.org/2001/XMLSchema"
+         xmlns:tns="http://gnuob.netbrasoft.com/"
+         elementFormDefault="unqualified"
+         targetNamespace="http://gnuob.netbrasoft.com/"
+         version="1.0">
+         <xs:include schemaLocation="./xsd/setting.xsd"></xs:include>
+         <xs:include schemaLocation="./xsd/metaData.xsd"></xs:include>
+         <xs:include schemaLocation="./xsd/operation.xsd"></xs:include>
+         <xs:include schemaLocation="./xsd/orderBy.xsd"></xs:include>
+         <xs:include schemaLocation="./xsd/orderEnum.xsd"></xs:include>
+         <xs:include schemaLocation="./xsd/paging.xsd"></xs:include>
+         <xs:element
+            name="Paging"
+            type="tns:paging" />
+         <xs:element
+            name="Permission"
+            type="tns:permission" />
+         <xs:element
+            name="Rule"
+            type="tns:rule" />
+         <xs:element
+            name="Setting"
+            type="tns:setting" />
+         <xs:element
+            name="countSetting"
+            type="tns:countSetting" />
+         <xs:element
+            name="countSettingResponse"
+            type="tns:countSettingResponse" />
+         <xs:element
+            name="findSetting"
+            type="tns:findSetting" />
+         <xs:element
+            name="findSettingById"
+            type="tns:findSettingById" />
+         <xs:element
+            name="findSettingByIdResponse"
+            type="tns:findSettingByIdResponse" />
+         <xs:element
+            name="findSettingResponse"
+            type="tns:findSettingResponse" />
+         <xs:element
+            name="mergeSetting"
+            type="tns:mergeSetting" />
+         <xs:element
+            name="mergeSettingResponse"
+            type="tns:mergeSettingResponse" />
+         <xs:element
+            name="metaData"
+            type="tns:metaData" />
+         <xs:element
+            name="persistSetting"
+            type="tns:persistSetting" />
+         <xs:element
+            name="persistSettingResponse"
+            type="tns:persistSettingResponse" />
+         <xs:element
+            name="refreshSetting"
+            type="tns:refreshSetting" />
+         <xs:element
+            name="refreshSettingResponse"
+            type="tns:refreshSettingResponse" />
+         <xs:element
+            name="removeSetting"
+            type="tns:removeSetting" />
+         <xs:element
+            name="removeSettingResponse"
+            type="tns:removeSettingResponse" />
+         <xs:complexType name="mergeSetting">
+            <xs:sequence>
+               <xs:element
+                  minOccurs="0"
+                  name="setting"
+                  type="tns:setting" />
+            </xs:sequence>
+         </xs:complexType>
+         <xs:complexType name="mergeSettingResponse">
+            <xs:sequence>
+               <xs:element
+                  minOccurs="0"
+                  name="return"
+                  type="tns:setting" />
+            </xs:sequence>
+         </xs:complexType>
+         <xs:complexType name="persistSetting">
+            <xs:sequence>
+               <xs:element
+                  minOccurs="0"
+                  name="setting"
+                  type="tns:setting" />
+            </xs:sequence>
+         </xs:complexType>
+         <xs:complexType name="persistSettingResponse">
+            <xs:sequence>
+               <xs:element
+                  minOccurs="0"
+                  name="return"
+                  type="tns:setting" />
+            </xs:sequence>
+         </xs:complexType>
+         <xs:complexType name="findSetting">
+            <xs:sequence>
+               <xs:element
+                  minOccurs="0"
+                  name="setting"
+                  type="tns:setting" />
+               <xs:element
+                  minOccurs="0"
+                  name="paging"
+                  type="tns:paging" />
+               <xs:element
+                  minOccurs="0"
+                  name="orderBy"
+                  type="tns:orderBy" />
+            </xs:sequence>
+         </xs:complexType>
+         <xs:complexType name="findSettingResponse">
+            <xs:sequence>
+               <xs:element
+                  maxOccurs="unbounded"
+                  minOccurs="0"
+                  name="return"
+                  type="tns:setting" />
+            </xs:sequence>
+         </xs:complexType>
+         <xs:complexType name="countSetting">
+            <xs:sequence>
+               <xs:element
+                  minOccurs="0"
+                  name="setting"
+                  type="tns:setting" />
+            </xs:sequence>
+         </xs:complexType>
+         <xs:complexType name="countSettingResponse">
+            <xs:sequence>
+               <xs:element
+                  name="return"
+                  type="xs:long" />
+            </xs:sequence>
+         </xs:complexType>
+         <xs:complexType name="findSettingById">
+            <xs:sequence>
+               <xs:element
+                  minOccurs="0"
+                  name="setting"
+                  type="tns:setting" />
+            </xs:sequence>
+         </xs:complexType>
+         <xs:complexType name="findSettingByIdResponse">
+            <xs:sequence>
+               <xs:element
+                  minOccurs="0"
+                  name="return"
+                  type="tns:setting" />
+            </xs:sequence>
+         </xs:complexType>
+         <xs:complexType name="refreshSetting">
+            <xs:sequence>
+               <xs:element
+                  minOccurs="0"
+                  name="setting"
+                  type="tns:setting" />
+            </xs:sequence>
+         </xs:complexType>
+         <xs:complexType name="refreshSettingResponse">
+            <xs:sequence>
+               <xs:element
+                  minOccurs="0"
+                  name="return"
+                  type="tns:setting" />
+            </xs:sequence>
+         </xs:complexType>
+         <xs:complexType name="removeSetting">
+            <xs:sequence>
+               <xs:element
+                  minOccurs="0"
+                  name="setting"
+                  type="tns:setting" />
+            </xs:sequence>
+         </xs:complexType>
+         <xs:complexType name="removeSettingResponse">
+            <xs:sequence />
+         </xs:complexType>
+      </xs:schema>
+   </wsdl:types>
+   <wsdl:message name="findSettingResponse">
+      <wsdl:part
+         element="tns:findSettingResponse"
+         name="parameters">
+      </wsdl:part>
+   </wsdl:message>
+   <wsdl:message name="mergeSetting">
+      <wsdl:part
+         element="tns:mergeSetting"
+         name="parameters">
+      </wsdl:part>
+      <wsdl:part
+         element="tns:metaData"
+         name="metaData">
+      </wsdl:part>
+   </wsdl:message>
+   <wsdl:message name="persistSetting">
+      <wsdl:part
+         element="tns:persistSetting"
+         name="parameters">
+      </wsdl:part>
+      <wsdl:part
+         element="tns:metaData"
+         name="metaData">
+      </wsdl:part>
+   </wsdl:message>
+   <wsdl:message name="countSettingResponse">
+      <wsdl:part
+         element="tns:countSettingResponse"
+         name="parameters">
+      </wsdl:part>
+   </wsdl:message>
+   <wsdl:message name="countSetting">
+      <wsdl:part
+         element="tns:countSetting"
+         name="parameters">
+      </wsdl:part>
+      <wsdl:part
+         element="tns:metaData"
+         name="metaData">
+      </wsdl:part>
+   </wsdl:message>
+   <wsdl:message name="persistSettingResponse">
+      <wsdl:part
+         element="tns:persistSettingResponse"
+         name="parameters">
+      </wsdl:part>
+   </wsdl:message>
+   <wsdl:message name="removeSettingResponse">
+      <wsdl:part
+         element="tns:removeSettingResponse"
+         name="result">
+      </wsdl:part>
+   </wsdl:message>
+   <wsdl:message name="findSettingByIdResponse">
+      <wsdl:part
+         element="tns:findSettingByIdResponse"
+         name="parameters">
+      </wsdl:part>
+   </wsdl:message>
+   <wsdl:message name="refreshSettingResponse">
+      <wsdl:part
+         element="tns:refreshSettingResponse"
+         name="parameters">
+      </wsdl:part>
+   </wsdl:message>
+   <wsdl:message name="findSetting">
+      <wsdl:part
+         element="tns:findSetting"
+         name="parameters">
+      </wsdl:part>
+      <wsdl:part
+         element="tns:metaData"
+         name="metaData">
+      </wsdl:part>
+   </wsdl:message>
+   <wsdl:message name="findSettingById">
+      <wsdl:part
+         element="tns:findSettingById"
+         name="parameters">
+      </wsdl:part>
+      <wsdl:part
+         element="tns:metaData"
+         name="metaData">
+      </wsdl:part>
+   </wsdl:message>
+   <wsdl:message name="refreshSetting">
+      <wsdl:part
+         element="tns:refreshSetting"
+         name="parameters">
+      </wsdl:part>
+      <wsdl:part
+         element="tns:metaData"
+         name="metaData">
+      </wsdl:part>
+   </wsdl:message>
+   <wsdl:message name="removeSetting">
+      <wsdl:part
+         element="tns:removeSetting"
+         name="parameters">
+      </wsdl:part>
+      <wsdl:part
+         element="tns:metaData"
+         name="metaData">
+      </wsdl:part>
+   </wsdl:message>
+   <wsdl:message name="mergeSettingResponse">
+      <wsdl:part
+         element="tns:mergeSettingResponse"
+         name="parameters">
+      </wsdl:part>
+   </wsdl:message>
+   <wsdl:portType name="SettingWebServiceImpl">
+      <wsdl:operation name="mergeSetting">
+         <wsdl:input
+            message="tns:mergeSetting"
+            name="mergeSetting">
+         </wsdl:input>
+         <wsdl:output
+            message="tns:mergeSettingResponse"
+            name="mergeSettingResponse">
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="persistSetting">
+         <wsdl:input
+            message="tns:persistSetting"
+            name="persistSetting">
+         </wsdl:input>
+         <wsdl:output
+            message="tns:persistSettingResponse"
+            name="persistSettingResponse">
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="findSetting">
+         <wsdl:input
+            message="tns:findSetting"
+            name="findSetting">
+         </wsdl:input>
+         <wsdl:output
+            message="tns:findSettingResponse"
+            name="findSettingResponse">
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="countSetting">
+         <wsdl:input
+            message="tns:countSetting"
+            name="countSetting">
+         </wsdl:input>
+         <wsdl:output
+            message="tns:countSettingResponse"
+            name="countSettingResponse">
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="findSettingById">
+         <wsdl:input
+            message="tns:findSettingById"
+            name="findSettingById">
+         </wsdl:input>
+         <wsdl:output
+            message="tns:findSettingByIdResponse"
+            name="findSettingByIdResponse">
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="refreshSetting">
+         <wsdl:input
+            message="tns:refreshSetting"
+            name="refreshSetting">
+         </wsdl:input>
+         <wsdl:output
+            message="tns:refreshSettingResponse"
+            name="refreshSettingResponse">
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="removeSetting">
+         <wsdl:input
+            message="tns:removeSetting"
+            name="removeSetting">
+         </wsdl:input>
+         <wsdl:output
+            message="tns:removeSettingResponse"
+            name="removeSettingResponse">
+         </wsdl:output>
+      </wsdl:operation>
+   </wsdl:portType>
+   <wsdl:binding
+      name="SettingWebServiceImplServiceSoapBinding"
+      type="tns:SettingWebServiceImpl">
+      <soap:binding
+         style="document"
+         transport="http://schemas.xmlsoap.org/soap/http" />
+      <wsdl:operation name="mergeSetting">
+         <soap:operation
+            soapAction=""
+            style="document" />
+         <wsdl:input name="mergeSetting">
+            <soap:header
+               message="tns:mergeSetting"
+               part="metaData"
+               use="literal">
+            </soap:header>
+            <soap:body
+               parts="parameters"
+               use="literal" />
+         </wsdl:input>
+         <wsdl:output name="mergeSettingResponse">
+            <soap:body use="literal" />
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="persistSetting">
+         <soap:operation
+            soapAction=""
+            style="document" />
+         <wsdl:input name="persistSetting">
+            <soap:header
+               message="tns:persistSetting"
+               part="metaData"
+               use="literal">
+            </soap:header>
+            <soap:body
+               parts="parameters"
+               use="literal" />
+         </wsdl:input>
+         <wsdl:output name="persistSettingResponse">
+            <soap:body use="literal" />
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="findSetting">
+         <soap:operation
+            soapAction=""
+            style="document" />
+         <wsdl:input name="findSetting">
+            <soap:header
+               message="tns:findSetting"
+               part="metaData"
+               use="literal">
+            </soap:header>
+            <soap:body
+               parts="parameters"
+               use="literal" />
+         </wsdl:input>
+         <wsdl:output name="findSettingResponse">
+            <soap:body use="literal" />
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="countSetting">
+         <soap:operation
+            soapAction=""
+            style="document" />
+         <wsdl:input name="countSetting">
+            <soap:header
+               message="tns:countSetting"
+               part="metaData"
+               use="literal">
+            </soap:header>
+            <soap:body
+               parts="parameters"
+               use="literal" />
+         </wsdl:input>
+         <wsdl:output name="countSettingResponse">
+            <soap:body use="literal" />
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="findSettingById">
+         <soap:operation
+            soapAction=""
+            style="document" />
+         <wsdl:input name="findSettingById">
+            <soap:header
+               message="tns:findSettingById"
+               part="metaData"
+               use="literal">
+            </soap:header>
+            <soap:body
+               parts="parameters"
+               use="literal" />
+         </wsdl:input>
+         <wsdl:output name="findSettingByIdResponse">
+            <soap:body use="literal" />
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="refreshSetting">
+         <soap:operation
+            soapAction=""
+            style="document" />
+         <wsdl:input name="refreshSetting">
+            <soap:header
+               message="tns:refreshSetting"
+               part="metaData"
+               use="literal">
+            </soap:header>
+            <soap:body
+               parts="parameters"
+               use="literal" />
+         </wsdl:input>
+         <wsdl:output name="refreshSettingResponse">
+            <soap:body use="literal" />
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="removeSetting">
+         <soap:operation
+            soapAction=""
+            style="document" />
+         <wsdl:input name="removeSetting">
+            <soap:header
+               message="tns:removeSetting"
+               part="metaData"
+               use="literal">
+            </soap:header>
+            <soap:body
+               parts="parameters"
+               use="literal" />
+         </wsdl:input>
+         <wsdl:output name="removeSettingResponse">
+            <soap:body use="literal" />
+         </wsdl:output>
+      </wsdl:operation>
+   </wsdl:binding>
+   <wsdl:service name="SettingWebServiceImplService">
+      <wsdl:port
+         binding="tns:SettingWebServiceImplServiceSoapBinding"
+         name="SettingWebServiceImplPort">
+         <soap:address
+            location="http://localhost:8080/gnuob-soap/SettingWebServiceImpl" />
+      </wsdl:port>
+   </wsdl:service>
+</wsdl:definitions>

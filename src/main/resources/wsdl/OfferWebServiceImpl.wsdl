@@ -1,0 +1,552 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<wsdl:definitions
+   xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+   xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+   xmlns:tns="http://gnuob.netbrasoft.com/"
+   xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+   xmlns:ns1="http://schemas.xmlsoap.org/soap/http"
+   name="OfferWebServiceImplService"
+   targetNamespace="http://gnuob.netbrasoft.com/">
+   <wsdl:types>
+      <xs:schema
+         xmlns:xs="http://www.w3.org/2001/XMLSchema"
+         xmlns:tns="http://gnuob.netbrasoft.com/"
+         elementFormDefault="unqualified"
+         targetNamespace="http://gnuob.netbrasoft.com/"
+         version="1.0">
+         <xs:include schemaLocation="./xsd/offer.xsd"></xs:include>
+         <xs:include schemaLocation="./xsd/metaData.xsd"></xs:include>
+         <xs:include schemaLocation="./xsd/operation.xsd"></xs:include>
+         <xs:include schemaLocation="./xsd/orderBy.xsd"></xs:include>
+         <xs:include schemaLocation="./xsd/orderEnum.xsd"></xs:include>
+         <xs:include schemaLocation="./xsd/paging.xsd"></xs:include>
+         <xs:element
+            name="Address"
+            type="tns:address" />
+         <xs:element
+            name="Content"
+            type="tns:content" />
+         <xs:element
+            name="Contract"
+            type="tns:contract" />
+         <xs:element
+            name="Customer"
+            type="tns:customer" />
+         <xs:element
+            name="Offer"
+            type="tns:offer" />
+         <xs:element
+            name="OfferRecord"
+            type="tns:offerRecord" />
+         <xs:element
+            name="Option"
+            type="tns:option" />
+         <xs:element
+            name="Paging"
+            type="tns:paging" />
+         <xs:element
+            name="Permission"
+            type="tns:permission" />
+         <xs:element
+            name="Product"
+            type="tns:product" />
+         <xs:element
+            name="Rule"
+            type="tns:rule" />
+         <xs:element
+            name="Stock"
+            type="tns:stock" />
+         <xs:element
+            name="SubCategory"
+            type="tns:subCategory" />
+         <xs:element
+            name="SubOption"
+            type="tns:subOption" />
+         <xs:element
+            name="countOffer"
+            type="tns:countOffer" />
+         <xs:element
+            name="countOfferResponse"
+            type="tns:countOfferResponse" />
+         <xs:element
+            name="findOffer"
+            type="tns:findOffer" />
+         <xs:element
+            name="findOfferById"
+            type="tns:findOfferById" />
+         <xs:element
+            name="findOfferByIdResponse"
+            type="tns:findOfferByIdResponse" />
+         <xs:element
+            name="findOfferResponse"
+            type="tns:findOfferResponse" />
+         <xs:element
+            name="mergeOffer"
+            type="tns:mergeOffer" />
+         <xs:element
+            name="mergeOfferResponse"
+            type="tns:mergeOfferResponse" />
+         <xs:element
+            name="metaData"
+            type="tns:metaData" />
+         <xs:element
+            name="persistOffer"
+            type="tns:persistOffer" />
+         <xs:element
+            name="persistOfferResponse"
+            type="tns:persistOfferResponse" />
+         <xs:element
+            name="refreshOffer"
+            type="tns:refreshOffer" />
+         <xs:element
+            name="refreshOfferResponse"
+            type="tns:refreshOfferResponse" />
+         <xs:element
+            name="removeOffer"
+            type="tns:removeOffer" />
+         <xs:element
+            name="removeOfferResponse"
+            type="tns:removeOfferResponse" />
+         <xs:complexType name="persistOffer">
+            <xs:sequence>
+               <xs:element
+                  minOccurs="0"
+                  name="offer"
+                  type="tns:offer" />
+            </xs:sequence>
+         </xs:complexType>
+         <xs:complexType name="persistOfferResponse">
+            <xs:sequence>
+               <xs:element
+                  minOccurs="0"
+                  name="return"
+                  type="tns:offer" />
+            </xs:sequence>
+         </xs:complexType>
+         <xs:complexType name="removeOffer">
+            <xs:sequence>
+               <xs:element
+                  minOccurs="0"
+                  name="offer"
+                  type="tns:offer" />
+            </xs:sequence>
+         </xs:complexType>
+         <xs:complexType name="removeOfferResponse">
+            <xs:sequence />
+         </xs:complexType>
+         <xs:complexType name="findOfferById">
+            <xs:sequence>
+               <xs:element
+                  minOccurs="0"
+                  name="offer"
+                  type="tns:offer" />
+            </xs:sequence>
+         </xs:complexType>
+         <xs:complexType name="findOfferByIdResponse">
+            <xs:sequence>
+               <xs:element
+                  minOccurs="0"
+                  name="return"
+                  type="tns:offer" />
+            </xs:sequence>
+         </xs:complexType>
+         <xs:complexType name="refreshOffer">
+            <xs:sequence>
+               <xs:element
+                  minOccurs="0"
+                  name="offer"
+                  type="tns:offer" />
+            </xs:sequence>
+         </xs:complexType>
+         <xs:complexType name="refreshOfferResponse">
+            <xs:sequence>
+               <xs:element
+                  minOccurs="0"
+                  name="return"
+                  type="tns:offer" />
+            </xs:sequence>
+         </xs:complexType>
+         <xs:complexType name="countOffer">
+            <xs:sequence>
+               <xs:element
+                  minOccurs="0"
+                  name="offer"
+                  type="tns:offer" />
+            </xs:sequence>
+         </xs:complexType>
+         <xs:complexType name="countOfferResponse">
+            <xs:sequence>
+               <xs:element
+                  name="return"
+                  type="xs:long" />
+            </xs:sequence>
+         </xs:complexType>
+         <xs:complexType name="findOffer">
+            <xs:sequence>
+               <xs:element
+                  minOccurs="0"
+                  name="offer"
+                  type="tns:offer" />
+               <xs:element
+                  minOccurs="0"
+                  name="paging"
+                  type="tns:paging" />
+               <xs:element
+                  minOccurs="0"
+                  name="orderBy"
+                  type="tns:orderBy" />
+            </xs:sequence>
+         </xs:complexType>
+         <xs:complexType name="findOfferResponse">
+            <xs:sequence>
+               <xs:element
+                  maxOccurs="unbounded"
+                  minOccurs="0"
+                  name="return"
+                  type="tns:offer" />
+            </xs:sequence>
+         </xs:complexType>
+         <xs:complexType name="mergeOffer">
+            <xs:sequence>
+               <xs:element
+                  minOccurs="0"
+                  name="offer"
+                  type="tns:offer" />
+            </xs:sequence>
+         </xs:complexType>
+         <xs:complexType name="mergeOfferResponse">
+            <xs:sequence>
+               <xs:element
+                  minOccurs="0"
+                  name="return"
+                  type="tns:offer" />
+            </xs:sequence>
+         </xs:complexType>
+      </xs:schema>
+   </wsdl:types>
+   <wsdl:message name="countOfferResponse">
+      <wsdl:part
+         element="tns:countOfferResponse"
+         name="parameters">
+      </wsdl:part>
+   </wsdl:message>
+   <wsdl:message name="refreshOffer">
+      <wsdl:part
+         element="tns:refreshOffer"
+         name="parameters">
+      </wsdl:part>
+      <wsdl:part
+         element="tns:metaData"
+         name="metaData">
+      </wsdl:part>
+   </wsdl:message>
+   <wsdl:message name="findOffer">
+      <wsdl:part
+         element="tns:findOffer"
+         name="parameters">
+      </wsdl:part>
+      <wsdl:part
+         element="tns:metaData"
+         name="metaData">
+      </wsdl:part>
+   </wsdl:message>
+   <wsdl:message name="mergeOfferResponse">
+      <wsdl:part
+         element="tns:mergeOfferResponse"
+         name="parameters">
+      </wsdl:part>
+   </wsdl:message>
+   <wsdl:message name="persistOffer">
+      <wsdl:part
+         element="tns:persistOffer"
+         name="parameters">
+      </wsdl:part>
+      <wsdl:part
+         element="tns:metaData"
+         name="metaData">
+      </wsdl:part>
+   </wsdl:message>
+   <wsdl:message name="removeOffer">
+      <wsdl:part
+         element="tns:removeOffer"
+         name="parameters">
+      </wsdl:part>
+      <wsdl:part
+         element="tns:metaData"
+         name="metaData">
+      </wsdl:part>
+   </wsdl:message>
+   <wsdl:message name="findOfferByIdResponse">
+      <wsdl:part
+         element="tns:findOfferByIdResponse"
+         name="parameters">
+      </wsdl:part>
+   </wsdl:message>
+   <wsdl:message name="findOfferById">
+      <wsdl:part
+         element="tns:findOfferById"
+         name="parameters">
+      </wsdl:part>
+      <wsdl:part
+         element="tns:metaData"
+         name="metaData">
+      </wsdl:part>
+   </wsdl:message>
+   <wsdl:message name="refreshOfferResponse">
+      <wsdl:part
+         element="tns:refreshOfferResponse"
+         name="parameters">
+      </wsdl:part>
+   </wsdl:message>
+   <wsdl:message name="persistOfferResponse">
+      <wsdl:part
+         element="tns:persistOfferResponse"
+         name="parameters">
+      </wsdl:part>
+   </wsdl:message>
+   <wsdl:message name="findOfferResponse">
+      <wsdl:part
+         element="tns:findOfferResponse"
+         name="parameters">
+      </wsdl:part>
+   </wsdl:message>
+   <wsdl:message name="removeOfferResponse">
+      <wsdl:part
+         element="tns:removeOfferResponse"
+         name="result">
+      </wsdl:part>
+   </wsdl:message>
+   <wsdl:message name="countOffer">
+      <wsdl:part
+         element="tns:countOffer"
+         name="parameters">
+      </wsdl:part>
+      <wsdl:part
+         element="tns:metaData"
+         name="metaData">
+      </wsdl:part>
+   </wsdl:message>
+   <wsdl:message name="mergeOffer">
+      <wsdl:part
+         element="tns:mergeOffer"
+         name="parameters">
+      </wsdl:part>
+      <wsdl:part
+         element="tns:metaData"
+         name="metaData">
+      </wsdl:part>
+   </wsdl:message>
+   <wsdl:portType name="OfferWebServiceImpl">
+      <wsdl:operation name="persistOffer">
+         <wsdl:input
+            message="tns:persistOffer"
+            name="persistOffer">
+         </wsdl:input>
+         <wsdl:output
+            message="tns:persistOfferResponse"
+            name="persistOfferResponse">
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="removeOffer">
+         <wsdl:input
+            message="tns:removeOffer"
+            name="removeOffer">
+         </wsdl:input>
+         <wsdl:output
+            message="tns:removeOfferResponse"
+            name="removeOfferResponse">
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="findOfferById">
+         <wsdl:input
+            message="tns:findOfferById"
+            name="findOfferById">
+         </wsdl:input>
+         <wsdl:output
+            message="tns:findOfferByIdResponse"
+            name="findOfferByIdResponse">
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="refreshOffer">
+         <wsdl:input
+            message="tns:refreshOffer"
+            name="refreshOffer">
+         </wsdl:input>
+         <wsdl:output
+            message="tns:refreshOfferResponse"
+            name="refreshOfferResponse">
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="countOffer">
+         <wsdl:input
+            message="tns:countOffer"
+            name="countOffer">
+         </wsdl:input>
+         <wsdl:output
+            message="tns:countOfferResponse"
+            name="countOfferResponse">
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="findOffer">
+         <wsdl:input
+            message="tns:findOffer"
+            name="findOffer">
+         </wsdl:input>
+         <wsdl:output
+            message="tns:findOfferResponse"
+            name="findOfferResponse">
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="mergeOffer">
+         <wsdl:input
+            message="tns:mergeOffer"
+            name="mergeOffer">
+         </wsdl:input>
+         <wsdl:output
+            message="tns:mergeOfferResponse"
+            name="mergeOfferResponse">
+         </wsdl:output>
+      </wsdl:operation>
+   </wsdl:portType>
+   <wsdl:binding
+      name="OfferWebServiceImplServiceSoapBinding"
+      type="tns:OfferWebServiceImpl">
+      <soap:binding
+         style="document"
+         transport="http://schemas.xmlsoap.org/soap/http" />
+      <wsdl:operation name="removeOffer">
+         <soap:operation
+            soapAction=""
+            style="document" />
+         <wsdl:input name="removeOffer">
+            <soap:header
+               message="tns:removeOffer"
+               part="metaData"
+               use="literal">
+            </soap:header>
+            <soap:body
+               parts="parameters"
+               use="literal" />
+         </wsdl:input>
+         <wsdl:output name="removeOfferResponse">
+            <soap:body use="literal" />
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="persistOffer">
+         <soap:operation
+            soapAction=""
+            style="document" />
+         <wsdl:input name="persistOffer">
+            <soap:header
+               message="tns:persistOffer"
+               part="metaData"
+               use="literal">
+            </soap:header>
+            <soap:body
+               parts="parameters"
+               use="literal" />
+         </wsdl:input>
+         <wsdl:output name="persistOfferResponse">
+            <soap:body use="literal" />
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="findOfferById">
+         <soap:operation
+            soapAction=""
+            style="document" />
+         <wsdl:input name="findOfferById">
+            <soap:header
+               message="tns:findOfferById"
+               part="metaData"
+               use="literal">
+            </soap:header>
+            <soap:body
+               parts="parameters"
+               use="literal" />
+         </wsdl:input>
+         <wsdl:output name="findOfferByIdResponse">
+            <soap:body use="literal" />
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="refreshOffer">
+         <soap:operation
+            soapAction=""
+            style="document" />
+         <wsdl:input name="refreshOffer">
+            <soap:header
+               message="tns:refreshOffer"
+               part="metaData"
+               use="literal">
+            </soap:header>
+            <soap:body
+               parts="parameters"
+               use="literal" />
+         </wsdl:input>
+         <wsdl:output name="refreshOfferResponse">
+            <soap:body use="literal" />
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="countOffer">
+         <soap:operation
+            soapAction=""
+            style="document" />
+         <wsdl:input name="countOffer">
+            <soap:header
+               message="tns:countOffer"
+               part="metaData"
+               use="literal">
+            </soap:header>
+            <soap:body
+               parts="parameters"
+               use="literal" />
+         </wsdl:input>
+         <wsdl:output name="countOfferResponse">
+            <soap:body use="literal" />
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="findOffer">
+         <soap:operation
+            soapAction=""
+            style="document" />
+         <wsdl:input name="findOffer">
+            <soap:header
+               message="tns:findOffer"
+               part="metaData"
+               use="literal">
+            </soap:header>
+            <soap:body
+               parts="parameters"
+               use="literal" />
+         </wsdl:input>
+         <wsdl:output name="findOfferResponse">
+            <soap:body use="literal" />
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="mergeOffer">
+         <soap:operation
+            soapAction=""
+            style="document" />
+         <wsdl:input name="mergeOffer">
+            <soap:header
+               message="tns:mergeOffer"
+               part="metaData"
+               use="literal">
+            </soap:header>
+            <soap:body
+               parts="parameters"
+               use="literal" />
+         </wsdl:input>
+         <wsdl:output name="mergeOfferResponse">
+            <soap:body use="literal" />
+         </wsdl:output>
+      </wsdl:operation>
+   </wsdl:binding>
+   <wsdl:service name="OfferWebServiceImplService">
+      <wsdl:port
+         binding="tns:OfferWebServiceImplServiceSoapBinding"
+         name="OfferWebServiceImplPort">
+         <soap:address
+            location="http://localhost:8080/gnuob-soap/OfferWebServiceImpl" />
+      </wsdl:port>
+   </wsdl:service>
+</wsdl:definitions>
